@@ -4,15 +4,24 @@
   <require from="components/logout/logout"></require>
   <require from="components/notification/notification-box"></require>
 
-  <nav-menu router.bind="router"></nav-menu>
-  <logout></logout>
+  <div class="full-height">
 
-  <form role="form" submit.trigger="collectData()" novalidate>
-    <input id="text" maxlength="255" type="text" ref="hashInput" value.bind="hashValue" autocomplete="off">
-    <label for="text">${instruction} <p>Characters left: ${hashInput.maxLength - hashInput.value.length}</p></label>
-    <button class="button">Create hash</button>
-  </form>
+    <nav-menu router.bind="router"></nav-menu>
+    <logout></logout>
 
-  <notification-box notify-user.bind="notifyUser"></notification-box>
+    <main>
+      <div class="small-6">
+        <form role="form" submit.trigger="collectData()" novalidate>
+          <input id="text" maxlength="255" type="text" ref="hashInput" value.bind="hashValue" autocomplete="off">
+          <label for="text">${instruction} <p>Characters left: ${hashInput.maxLength - hashInput.value.length}</p></label>
+          <button class="button">Create hash</button>
+        </form>
+      </div>
+    </main>
+
+    <notification-box notify-user.bind="notifyUser"></notification-box>
+
+  </div>
+
 
 </template>

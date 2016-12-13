@@ -6,17 +6,19 @@
   <nav-menu router.bind="router"></nav-menu>
   <logout></logout>
 
-  <table>
-    <thead>
-      <tr>
-        <th class="text-center" repeat.for="header of headers" name.bind="header">${header}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th class="text-center" repeat.for="data of data" name.bind="data">${data}</th>
-      </tr>
-    </tbody>
-  </table>
+  <main>
+    <table>
+      <thead>
+        <tr>
+          <th class="text-center" repeat.for="header of headers" name.bind="header">${header}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th class="text-center" repeat.for="data of data" name.bind="data">${data}</th>
+        </tr>
+      </tbody>
+    </table>
+  </main>
 
 </template>
