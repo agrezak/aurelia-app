@@ -101,7 +101,16 @@ define('main',['exports', './environment'], function (exports, _environment) {
     });
   }
 });
-define('components/logout',["exports", "aurelia-framework", "aurelia-router"], function (exports, _aureliaFramework, _aureliaRouter) {
+define('resources/index',["exports"], function (exports) {
+  "use strict";
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.configure = configure;
+  function configure(config) {}
+});
+define('components/logout/logout',["exports", "aurelia-framework", "aurelia-router"], function (exports, _aureliaFramework, _aureliaRouter) {
   "use strict";
 
   Object.defineProperty(exports, "__esModule", {
@@ -132,7 +141,7 @@ define('components/logout',["exports", "aurelia-framework", "aurelia-router"], f
     return Logout;
   }()) || _class);
 });
-define('components/notification-box',["exports", "aurelia-framework"], function (exports, _aureliaFramework) {
+define('components/notification/notification-box',["exports", "aurelia-framework"], function (exports, _aureliaFramework) {
   "use strict";
 
   Object.defineProperty(exports, "__esModule", {
@@ -140,26 +149,67 @@ define('components/notification-box',["exports", "aurelia-framework"], function 
   });
   exports.NotificationBox = undefined;
 
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
       throw new TypeError("Cannot call a class as a function");
     }
   }
 
-  var NotificationBox = exports.NotificationBox = function NotificationBox() {
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _desc, _value, _class, _descriptor;
+
+  var NotificationBox = exports.NotificationBox = (_class = function NotificationBox() {
     _classCallCheck(this, NotificationBox);
 
-    this.notificationMessage = "Success! You can view created table";
-  };
-});
-define('resources/index',["exports"], function (exports) {
-  "use strict";
+    _initDefineProp(this, "notifyUser", _descriptor, this);
 
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.configure = configure;
-  function configure(config) {}
+    this.notificationMessage = "Success! You can view created table";
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "notifyUser", [_aureliaFramework.bindable], {
+    enumerable: true,
+    initializer: null
+  })), _class);
 });
 define('views/data-table/data-table',["exports"], function (exports) {
   "use strict";
@@ -221,6 +271,7 @@ define('views/hash-input/hash-input',["exports", "aurelia-router", "aurelia-fram
       this.hash = "";
       this.creationDate = "";
       this.instruction = "Enter text here. Maximum length : 255 characters";
+      this.notifyUser = false;
     }
 
     InputClass.prototype.collectData = function collectData() {
@@ -236,6 +287,7 @@ define('views/hash-input/hash-input',["exports", "aurelia-router", "aurelia-fram
       value = value.substring(0, 8);
 
       this.hash = value;
+      this.notifyUser = true;
 
       localStorage.setItem("hash", this.hash);
       localStorage.setItem("input", this.hashValue);
@@ -307,11 +359,17 @@ define('views/login/login',["exports", "aurelia-router", "aurelia-framework"], f
     return Login;
   }()) || _class);
 });
-define('text!app.html', ['module'], function(module) { module.exports = "<template>\n  <router-view></router-view>\n</template>\n"; });
-define('text!components/logout.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n  <button class=\"button\" click.trigger=\"logOut()\">Logout</button>\r\n\r\n</template>\r\n"; });
-define('text!components/nav-menu.html', ['module'], function(module) { module.exports = "<template bindable=\"router\">\r\n\r\n  <ul>\r\n    <li repeat.for=\"row of router.navigation\" class=\"${row.isActive ? 'active' : ''}\">\r\n      <a href.bind=\"row.href\">${row.title}</a>\r\n    </li>\r\n  </ul>\r\n\r\n</template>\r\n"; });
-define('text!components/notification-box.html', ['module'], function(module) { module.exports = "<template bindable>\r\n\r\n<div class=\"small-3 column\">\r\n  <p>${notificationMessage}</p>\r\n</div>\r\n\r\n</template>\r\n"; });
-define('text!views/data-table/data-table.html', ['module'], function(module) { module.exports = "<template>\n\n  <require from=\"components/nav-menu.html\"></require>\n  <require from=\"components/logout\"></require>\n\n  <nav-menu router.bind=\"router\"></nav-menu>\n  <logout></logout>\n\n  <table>\n    <thead>\n      <tr>\n        <th repeat.for=\"header of headers\" name.bind=\"header\">${header}</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr>\n        <th repeat.for=\"data of data\" name.bind=\"data\">${data}</th>\n      </tr>\n    </tbody>\n  </table>\n\n</template>\n"; });
+define('text!app.html', ['module'], function(module) { module.exports = "<template>\n\n  <require from=\"styles/main.css\"></require>\n  <router-view></router-view>\n\n</template>\n"; });
+define('text!components/logout/logout.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n  <button class=\"button\" click.trigger=\"logOut()\">Logout</button>\r\n\r\n</template>\r\n"; });
+define('text!styles/animations.css', ['module'], function(module) { module.exports = ".animation {\n  transition: 1.5s all linear; }\n\n.animation-slide-up {\n  transform: translateY(1000px); }\n\n.animation-slide-down {\n  transform: translateY(-1000px); }\n"; });
+define('text!styles/layout.css', ['module'], function(module) { module.exports = "body {\n  background: #ecf0f1;\n  font-family: \"Roboto\", sans-serif; }\n"; });
+define('text!components/nav/nav-menu.html', ['module'], function(module) { module.exports = "<template bindable=\"router\">\r\n\r\n  <ul>\r\n    <li repeat.for=\"row of router.navigation\" class=\"${row.isActive ? 'active' : ''}\">\r\n      <a href.bind=\"row.href\">${row.title}</a>\r\n    </li>\r\n  </ul>\r\n\r\n</template>\r\n"; });
+define('text!components/notification/notification-box.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n<div class=\"small-3 column align-middle notification-box box-bottom box-success animation ${notifyUser ? '' : 'animation-slide-up'}\">\r\n  <p>${notificationMessage}</p>\r\n</div>\r\n\r\n</template>\r\n"; });
+define('text!styles/main.css', ['module'], function(module) { module.exports = "body {\n  background: #ecf0f1;\n  font-family: \"Roboto\", sans-serif; }\n\n.align-middle {\n  display: flex;\n  align-items: middle; }\n\n.animation {\n  transition: 1.5s all linear; }\n\n.animation-slide-up {\n  transform: translateY(1000px); }\n\n.animation-slide-down {\n  transform: translateY(-1000px); }\n\n.notification-box {\n  position: fixed;\n  height: 10rem;\n  border-style: solid;\n  border-width: 1px;\n  color: #fff; }\n  .notification-box.box-bottom {\n    bottom: 0;\n    right: 0; }\n  .notification-box.box-success {\n    background-color: #3a945b;\n    border-color: #43AC6A; }\n\n.error {\n  color: #e74c3c;\n  font-weight: 900; }\n"; });
+define('text!views/data-table/data-table.html', ['module'], function(module) { module.exports = "<template>\n\n  <require from=\"components/nav/nav-menu.html\"></require>\n  <require from=\"components/logout/logout\"></require>\n\n  <nav-menu router.bind=\"router\"></nav-menu>\n  <logout></logout>\n\n  <table>\n    <thead>\n      <tr>\n        <th class=\"text-center\" repeat.for=\"header of headers\" name.bind=\"header\">${header}</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr>\n        <th class=\"text-center\" repeat.for=\"data of data\" name.bind=\"data\">${data}</th>\n      </tr>\n    </tbody>\n  </table>\n\n</template>\n"; });
+define('text!styles/variables.css', ['module'], function(module) { module.exports = ""; });
+define('text!styles/notifications/notifications.css', ['module'], function(module) { module.exports = ".notification-box {\n  position: fixed;\n  height: 10rem;\n  border-style: solid;\n  border-width: 1px;\n  color: #fff; }\n  .notification-box.box-bottom {\n    bottom: 0;\n    right: 0; }\n  .notification-box.box-success {\n    background-color: #3a945b;\n    border-color: #43AC6A; }\n\n.error {\n  color: #e74c3c;\n  font-weight: 900; }\n"; });
+define('text!views/hash-input/hash-input.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n  <require from=\"components/nav/nav-menu.html\"></require>\n  <require from=\"components/logout/logout\"></require>\r\n  <require from=\"components/notification/notification-box\"></require>\r\n\r\n  <nav-menu router.bind=\"router\"></nav-menu>\r\n  <logout></logout>\r\n\r\n  <form role=\"form\" submit.trigger=\"collectData()\" novalidate>\r\n    <input id=\"text\" maxlength=\"255\" type=\"text\" ref=\"hashInput\" value.bind=\"hashValue\" autocomplete=\"off\">\r\n    <label for=\"text\">${instruction} <p>Characters left: ${hashInput.maxLength - hashInput.value.length}</p></label>\r\n    <button class=\"button\">Create hash</button>\r\n  </form>\r\n\r\n  <notification-box notify-user.bind=\"notifyUser\"></notification-box>\r\n\r\n</template>\r\n"; });
 define('text!views/login/login.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n  <form role=\"form\" submit.trigger=\"validate()\" novalidate>\r\n    <input id=\"email\" type=\"email\" value.bind=\"email\" autocomplete=\"off\">\r\n    <label for=\"email\">Please login with your e-mail address</label>\r\n    <p class=\"${hideError ? 'hide' : 'error'}\" ref=\"errorHolder\">${errorMessage}</p>\r\n    <button class=\"button\">Log me in</button>\r\n  </form>\r\n\r\n</template>\r\n"; });
-define('text!views/hash-input/hash-input.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n  <require from=\"components/nav-menu.html\"></require>\r\n  <require from=\"components/logout\"></require>\r\n  <require from=\"components/notification-box\"></require>\r\n\r\n  <nav-menu router.bind=\"router\"></nav-menu>\r\n  <logout></logout>\r\n\r\n  <form role=\"form\" submit.trigger=\"collectData()\" novalidate>\r\n    <input id=\"text\" maxlength=\"255\" type=\"text\" ref=\"hashInput\" value.bind=\"hashValue\" autocomplete=\"off\">\r\n    <label for=\"text\">${instruction} <p>Characters left: ${hashInput.maxLength - hashInput.value.length}</p></label>\r\n    <button class=\"button\">Create hash</button>\r\n  </form>\r\n\r\n  <notification-box></notification-box>\r\n\r\n</template>\r\n"; });
+define('text!styles/alignment.css', ['module'], function(module) { module.exports = ".align-middle {\n  display: flex;\n  align-items: middle; }\n"; });
 //# sourceMappingURL=app-bundle.js.map

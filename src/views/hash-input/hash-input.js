@@ -1,5 +1,5 @@
 import { Router } from "aurelia-router";
-import { inject } from "aurelia-framework";
+import { inject, bindable } from "aurelia-framework";
 
 @inject(Router)
 
@@ -11,6 +11,7 @@ export class InputClass {
     this.hash = "";
     this.creationDate = "";
     this.instruction = "Enter text here. Maximum length : 255 characters";
+    this.notifyUser = false;
   }
 
   collectData() {
@@ -26,6 +27,7 @@ export class InputClass {
     value = value.substring(0,8);
 
     this.hash = value;
+    this.notifyUser = true;
 
     localStorage.setItem("hash", this.hash);
     localStorage.setItem("input", this.hashValue);

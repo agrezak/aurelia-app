@@ -1,8 +1,8 @@
 <template>
 
-  <require from="components/nav-menu.html"></require>
-  <require from="components/logout"></require>
-  <require from="components/notification-box"></require>
+  <require from="components/nav/nav-menu.html"></require>
+  <require from="components/logout/logout"></require>
+  <require from="components/notification/notification-box"></require>
 
   <nav-menu router.bind="router"></nav-menu>
   <logout></logout>
@@ -13,6 +13,6 @@
     <button class="button">Create hash</button>
   </form>
 
-  <notification-box></notification-box>
+  <notification-box notify-user.bind="notifyUser"></notification-box>
 
 </template>

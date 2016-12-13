@@ -1,0 +1,11 @@
+.animation {
+  transition: 1.5s all linear;
+}
+
+.animation-slide-up {
+  transform: translateY(1000px);
+}
+
+.animation-slide-down {
+  transform: translateY(-1000px);
+}
