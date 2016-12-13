@@ -1,0 +1,18 @@
+<template>
+
+  <require from="components/nav-menu.html"></require>
+  <require from="components/logout"></require>
+  <require from="components/notification-box"></require>
+
+  <nav-menu router.bind="router"></nav-menu>
+  <logout></logout>
+
+  <form role="form" submit.trigger="collectData()" novalidate>
+    <input id="text" maxlength="255" type="text" ref="hashInput" value.bind="hashValue" autocomplete="off">
+    <label for="text">${instruction} <p>Characters left: ${hashInput.maxLength - hashInput.value.length}</p></label>
+    <button class="button">Create hash</button>
+  </form>
+
+  <notification-box></notification-box>
+
+</template>

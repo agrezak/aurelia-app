@@ -1,0 +1,22 @@
+<template>
+
+  <require from="components/nav-menu.html"></require>
+  <require from="components/logout"></require>
+
+  <nav-menu router.bind="router"></nav-menu>
+  <logout></logout>
+
+  <table>
+    <thead>
+      <tr>
+        <th repeat.for="header of headers" name.bind="header">${header}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th repeat.for="data of data" name.bind="data">${data}</th>
+      </tr>
+    </tbody>
+  </table>
+
+</template>
