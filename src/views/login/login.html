@@ -1,10 +1,14 @@
 <template>
 
-  <form role="form" submit.trigger="validate()" novalidate>
-    <input id="email" type="email" value.bind="email" autocomplete="off">
-    <label for="email">Please login with your e-mail address</label>
-    <p class="${hideError ? 'hide' : 'error'}" ref="errorHolder">${errorMessage}</p>
-    <button class="button">Log me in</button>
-  </form>
+  <div class="full-height custom-center">
+    <div class="small-6 text-center">
+      <form role="form" submit.trigger="validate()" novalidate>
+        <input id="email" type="email" value.bind="email" autocomplete="off">
+        <label class="text-large" for="email">Please login with your e-mail address</label>
+        <p class="animation text-medium bold ${hideError ? 'not-visible' : 'error'}" ref="errorHolder">${errorMessage}</p>
+        <button class="button large">Log me in</button>
+      </form>
+    </div>
+  </div>
 
 </template>
