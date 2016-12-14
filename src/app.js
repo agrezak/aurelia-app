@@ -1,5 +1,11 @@
 import { Redirect } from "aurelia-router";
 
+/**
+ * Root class App
+ * config.map contains app views
+ * the default fallback route is login screen
+ */
+
 export class App {
 
   configureRouter(config, router) {
@@ -18,6 +24,12 @@ export class App {
 
   }
 }
+
+/**
+ * Class used to Authorize user when route is changed
+ * If user is logged (in this case : local storage has stored data in it) then user can change the view
+ * Otherwise : cancel redirect
+ */
 
 class AuthorizeStep {
   run(navigationInstruction, next) {

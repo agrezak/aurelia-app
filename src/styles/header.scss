@@ -10,6 +10,12 @@ header {
     margin-top: $header-margin;
     .button {
       font-size: 1.25rem;
+      padding: 0;
+
+      a {
+        padding: 1rem 2rem;
+        display: inline-block;
+      }
     }
   }
 

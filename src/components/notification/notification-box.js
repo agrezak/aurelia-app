@@ -1,5 +1,10 @@
 import { bindable } from "aurelia-framework";
 
+/**
+ * NotificationBox component class
+ * It controls visibility of notification box
+ */
+
 export class NotificationBox {
 
   @bindable notifyUser;

@@ -1,7 +1,12 @@
 import { Router } from "aurelia-router";
-import { inject, bindable } from "aurelia-framework";
+import { inject } from "aurelia-framework";
 
 @inject(Router)
+
+/**
+ * InputClass that invokes md5 hash function,
+ * collects and stores data in localStorage { date + input value + hash created from input}
+ */
 
 export class InputClass {
 
