@@ -6,10 +6,29 @@
   transition: 0.5s;
 }
 
-.animation-slide-up {
+.animation-slide-down {
   transform: translateY(1000px);
 }
 
-.animation-slide-down {
+.animation-slide-up {
   transform: translateY(-1000px);
+}
+
+.animation-flip {
+  animation: flip 1s;
+}
+
+// Keyframes
+
+@keyframes flip {
+  0% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -90deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -90deg);
+    -webkit-transition-timing-function: ease-in;
+    transition-timing-function: ease-in;
+  }
+  100% {
+    -webkit-transform: perspective(400px);
+    transform: perspective(400px);
+  }
 }

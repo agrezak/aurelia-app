@@ -25,6 +25,10 @@ header {
     }
   }
 
+  .active {
+    border: 2px solid $red;
+  }
+
   a {
     color: $white;
     &:hover {

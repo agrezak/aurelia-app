@@ -10,8 +10,8 @@ export class NotificationBox {
     this.notificationTitle = "Click here.";
   }
 
-  notificationRedirect() {
-
+  closeButton() {
+    this.notifyUser = false;
   }
 
 }

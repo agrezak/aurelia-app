@@ -1,4 +1,5 @@
-@import "../variables";
+@import "variables";
+@import "media";
 
 .notification-box {
   position: fixed;
@@ -9,6 +10,10 @@
   border-width: 1.5px;
   color: $white;
 
+  @include mobile {
+    width: 100%;
+  }
+
   &.box-bottom {
     bottom: 0;
     right: 0;
@@ -17,6 +22,12 @@
   &.box-success {
     background-color: $green;
     border-color: $green-light;
+  }
+
+  .button-close {
+    margin-top: 10px;
+    width: 100%;
+    background: $orange;
   }
 
   a {

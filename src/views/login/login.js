@@ -7,7 +7,7 @@ export class Login {
 
   constructor(router) {
     this.router = router;
-    this.errorMessage = "Please enter correct e-mail address, for example: johndoe@gmail.com.";
+    this.errorMessage = "Please enter correct e-mail address, for example: johndoe@gmail.com";
     this.hideError = true;
   }
 

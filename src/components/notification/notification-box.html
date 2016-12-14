@@ -1,8 +1,9 @@
 <template>
 
-<div class="notification-box box-bottom box-success animation-long ${notifyUser ? '' : 'animation-slide-up'}">
-  <p>${notificationMessage}</p>
-  <a href="${notificationHref}">${notificationTitle}</a>
+<div ref="notifBox" class="notification-box box-bottom box-success text-center animation-long ${notifyUser ? 'animation-flip' : 'animation-slide-down'}">
+  <p class="no-margin">${notificationMessage}</p>
+  <a class="block" href="${notificationHref}">${notificationTitle}</a>
+  <button click.trigger="closeButton()" class="button button-close large">Close</button>
 </div>
 
 </template>
