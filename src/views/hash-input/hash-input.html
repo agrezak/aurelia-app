@@ -4,22 +4,32 @@
   <require from="components/logout/logout"></require>
   <require from="components/notification/notification-box"></require>
 
-  <div class="full-height">
+  <div class="full-height custom-center">
 
-    <nav-menu router.bind="router"></nav-menu>
-    <logout></logout>
+    <header>
+      <div class="row">
+        <div class="small-6 column">
+          <nav-menu router.bind="router"></nav-menu>
+        </div>
+        <div class="small-6 column text-right">
+          <logout></logout>
+        </div>
+      </div>
+    </header>
 
     <main>
-      <div class="small-6">
-        <form role="form" submit.trigger="collectData()" novalidate>
-          <input id="text" maxlength="255" type="text" ref="hashInput" value.bind="hashValue" autocomplete="off">
-          <label for="text">${instruction} <p>Characters left: ${hashInput.maxLength - hashInput.value.length}</p></label>
-          <button class="button">Create hash</button>
-        </form>
+      <div class="row align-center">
+        <div class="small-10 text-center">
+          <form role="form" submit.trigger="collectData()" novalidate>
+            <input id="text" maxlength="255" type="text" ref="hashInput" value.bind="hashValue" autocomplete="off">
+            <label class="text-large" for="text">${instruction} <p>Characters left: ${hashInput.maxLength - hashInput.value.length}</p></label>
+            <button class="button large">Create hash</button>
+          </form>
+        </div>
       </div>
     </main>
 
-    <notification-box notify-user.bind="notifyUser"></notification-box>
+    <notification-box notify-user.bind="notifyUser" notification-href.bind="redirectHref"></notification-box>
 
   </div>
 

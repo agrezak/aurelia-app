@@ -3,22 +3,36 @@
   <require from="components/nav/nav-menu.html"></require>
   <require from="components/logout/logout"></require>
 
-  <nav-menu router.bind="router"></nav-menu>
-  <logout></logout>
+  <div class="full-height custom-center">
 
-  <main>
-    <table>
-      <thead>
-        <tr>
-          <th class="text-center" repeat.for="header of headers" name.bind="header">${header}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th class="text-center" repeat.for="data of data" name.bind="data">${data}</th>
-        </tr>
-      </tbody>
-    </table>
-  </main>
+    <header>
+      <div class="row">
+        <div class="small-6 column">
+          <nav-menu router.bind="router"></nav-menu>
+        </div>
+        <div class="small-6 column text-right">
+          <logout></logout>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="row overflow-x">
+        <table>
+          <thead>
+            <tr>
+              <th class="text-center" repeat.for="header of headers" name.bind="header">${header}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="text-center" repeat.for="data of data" name.bind="data">${data}</th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+  </div>
 
 </template>

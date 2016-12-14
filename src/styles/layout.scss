@@ -1,12 +1,50 @@
 @import "variables";
 
-// Main
-body {
-  background: $clouds;
-  font-family: $roboto, sans-serif;
+//
+// css-override is custom class made only for making overriding foundation classess easier ;)
+// !important was tempting, but I think it's better solution
+//
+.css-override {
+
+  // Main
+  body {
+    background: $clouds;
+    font-family: $roboto, sans-serif;
+    overflow-x: hidden;
+  }
+
+  main {
+    width: 100%;
+  }
+
+  input {
+    &:focus {
+      box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    }
+  }
+
+  table {
+
+    tbody, thead {
+      border: 0;
+    }
+    thead{
+      th {
+        background: $midnight;
+        color: $white;
+      }
+    }
+    tbody {
+      th {
+        background: $abestos;
+      }
+    }
+  }
+
 }
 
 // Height, width
 .full-height {
   height: 100vh;
+  width: 100%;
 }

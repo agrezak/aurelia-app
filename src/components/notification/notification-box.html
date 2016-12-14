@@ -1,8 +1,8 @@
 <template>
 
-<div class="small-3 column align-center notification-box box-bottom box-success animation ${notifyUser ? '' : 'animation-slide-up'}">
+<div class="notification-box box-bottom box-success animation-long ${notifyUser ? '' : 'animation-slide-up'}">
   <p>${notificationMessage}</p>
-  <a href=""></a>
+  <a href="${notificationHref}">${notificationTitle}</a>
 </div>
 
 </template>

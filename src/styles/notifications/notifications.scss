@@ -3,8 +3,10 @@
 .notification-box {
   position: fixed;
   height: 10rem;
+  font-size: 1.15rem;
+  padding: 1.5rem;
   border-style: solid;
-  border-width: 1px;
+  border-width: 1.5px;
   color: $white;
 
   &.box-bottom {
@@ -15,6 +17,10 @@
   &.box-success {
     background-color: $green;
     border-color: $green-light;
+  }
+
+  a {
+    color: $white;
   }
 }
 

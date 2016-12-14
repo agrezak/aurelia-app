@@ -12,6 +12,7 @@ export class InputClass {
     this.creationDate = "";
     this.instruction = "Enter text here. Maximum length : 255 characters";
     this.notifyUser = false;
+    this.redirectHref = "#/table";
   }
 
   collectData() {

@@ -1,0 +1,34 @@
+@import "variables";
+
+header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: $belize;
+
+  .button-group {
+    margin-top: $header-margin;
+    .button {
+      font-size: 1.25rem;
+    }
+  }
+
+  .button {
+    margin-top: $header-margin;
+    font-size: 1.25rem;
+    &:only-child  {
+      background-color: $emerald;
+      transition: 0.25s;
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  a {
+    color: $white;
+    &:hover {
+      color: $clouds;
+    }
+  }
+}
