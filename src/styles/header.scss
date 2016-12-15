@@ -1,4 +1,5 @@
 @import "variables";
+@import "media";
 
 header {
   position: absolute;
@@ -13,8 +14,11 @@ header {
       padding: 0;
 
       a {
-        padding: 1rem 2rem;
+        padding: 1rem;
         display: inline-block;
+        @include desktop {
+          padding: 1rem 2rem;
+        }
       }
     }
   }
