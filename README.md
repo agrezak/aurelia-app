@@ -30,4 +30,19 @@ Go to : localhost:9000
 
 Works on Chrome && Firefox.
 
+##Tests
+
+Install Karma CLI:
+```
+npm i -g karma-cli
+```
+Run the tests:
+``` 
+karma start
+```
+
 ## Enjoy!
+
+
+
+
