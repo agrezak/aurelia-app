@@ -4,7 +4,7 @@ import { Router } from "aurelia-router";
 @inject(Router)
 
 /**
- * Logout component class, it clears localStorage and redirects user to
+ * Logout component class, it redirects user to
  * the login view
  */
 
@@ -15,7 +15,6 @@ export class Logout {
   }
 
   logOut() {
-    localStorage.clear();
     this.router.navigateToRoute("login");
   }
 

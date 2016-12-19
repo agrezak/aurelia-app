@@ -1,21 +1,11 @@
 <template>
 
-  <require from="components/nav/nav-menu.html"></require>
-  <require from="components/logout/logout"></require>
+  <require from="components/header/custom-header"></require>
   <require from="components/notification/notification-box"></require>
 
-  <div class="full-height custom-center">
+  <custom-header></custom-header>
 
-    <header>
-      <div class="row">
-        <div class="small-6 column">
-          <nav-menu router.bind="router"></nav-menu>
-        </div>
-        <div class="small-6 column text-right">
-          <logout></logout>
-        </div>
-      </div>
-    </header>
+  <div class="full-height custom-center">
 
     <main>
       <div class="row align-center">

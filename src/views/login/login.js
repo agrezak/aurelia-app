@@ -4,7 +4,7 @@ import { inject } from "aurelia-framework";
 @inject(Router)
 
 /**
- * Login class with custom e-mail validation, 
+ * Login class with custom e-mail validation,
  * it also stores e-mail in localStorage
  */
 
@@ -31,6 +31,7 @@ export class Login {
 
   }
   success(args) {
+    this.i++;
     this.cacheUser(args);
     this.router.navigateToRoute("input");
   }

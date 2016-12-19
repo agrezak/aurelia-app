@@ -1,4 +1,4 @@
-import { InputClass } from "../../src/views/hash-input/hash-input";
+import md5 from "../../node_modules/blueimp-md5/js/md5.js";
 
 describe("MD5 Hash function", () => {
 
@@ -30,7 +30,7 @@ describe("MD5 Hash function", () => {
       "snake_case",
       "mix@ed121_stuff",
       "1212313",
-      "2131231222,22111!!2@"
+      "2131231222,22111!!2@",
     ];
 
     // Hash && push

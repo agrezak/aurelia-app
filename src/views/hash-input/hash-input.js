@@ -1,6 +1,5 @@
 import { Router } from "aurelia-router";
 import { inject } from "aurelia-framework";
-import md5 from '../../node_modules/blueimp-md5/js/md5.js';
 
 @inject(Router)
 

@@ -1,20 +1,11 @@
 <template>
 
-  <require from="components/nav/nav-menu.html"></require>
-  <require from="components/logout/logout"></require>
+  <require from="components/header/custom-header"></require>
+  <require from="components/modal/modal"></require>
+
+  <custom-header></custom-header>
 
   <div class="full-height custom-center">
-
-    <header>
-      <div class="row">
-        <div class="small-6 column">
-          <nav-menu router.bind="router"></nav-menu>
-        </div>
-        <div class="small-6 column text-right">
-          <logout></logout>
-        </div>
-      </div>
-    </header>
 
     <main>
       <div class="row overflow-x">
@@ -31,8 +22,15 @@
           </tbody>
         </table>
       </div>
-    </main>
 
+      <!-- TODO   -->
+      <!-- <div class="row align-right">
+        <button class="button large" click.trigger="openModal()">Erase all the data</button>
+      </div> -->
+
+    </main>
   </div>
+
+  <modal></modal>
 
 </template>

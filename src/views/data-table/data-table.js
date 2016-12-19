@@ -1,3 +1,8 @@
+import { inject } from "aurelia-framework";
+import { Modal } from "../../components/modal/modal";
+
+@inject(Modal)
+
 /**
  * TableClass that:
  * collects data from localStorage so framework can render the view based on
@@ -9,8 +14,9 @@ export class TableClass {
   headers = [];
   data = [];
 
-  constructor() {
+  constructor(Modal) {
     this.collectData();
+    this.modal = Modal;
   }
 
   collectData() {
@@ -21,6 +27,14 @@ export class TableClass {
       this.headers.push(key);
     }
 
+  }
+
+  clearData() {
+    localStorage.clear();
+  }
+
+  openModal() {
+    this.modal.openModal();
   }
 
 }

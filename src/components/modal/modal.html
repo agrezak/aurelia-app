@@ -1,0 +1,26 @@
+<template>
+
+  <!-- Modal wrapper -->
+
+<div model.bind="hide-modal" class="${hideModal ? 'hide' : 'test-class'}">
+
+    <div class="modal-bg"></div>
+
+    <div class="modal">
+
+      <div class="row align-center">
+
+        <p>Are you sure? Clicking "yes" will result in clearing all the data and logging you out. Clicking "no" will result in closing this window.</p>
+
+        <div class="small-6 text-center">
+          <button class="button large">Yes</button>
+          <button class="button large" click.trigger="closeModal()">No</button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</template>
